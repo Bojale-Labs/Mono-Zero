@@ -1,0 +1,416 @@
+.d-flx {
+	display: flex
+}
+.radish{
+background-color: '#f38600';
+}
+
+.j-c-c {
+	justify-content: center
+}
+.p-n-t {
+	cursor: pointer;
+}
+.j-c-sb {
+	justify-content: space-between
+}
+
+.al-i-c {
+	align-items: center
+}
+
+.h-100vh {
+	height: 100vh
+}
+
+.tx-c {
+	text-align: center
+}
+
+
+/*! Margins */
+
+.m-0 {
+	margin: 0
+}
+
+.m-0-a {
+	margin: 0 auto
+}
+
+.my-0 {
+	margin-top: 0;
+	margin-bottom: 0
+}
+
+.my-1 {
+	margin-top: 1rem;
+	margin-bottom: 1rem
+}
+
+.my-1-s {
+	margin-top: 1rem;
+	margin-bottom: 1rem
+}
+
+@media only screen and (min-width: 768px) {
+	.my-1-s {
+		margin-top: 0;
+		margin-bottom: 0
+	}
+}
+
+.mx-1 {
+	margin-left: 5rem;
+	margin-right: 5rem
+}
+
+.mt-0 {
+	margin-top: 0
+}
+
+.mt-h {
+	margin-top: 0.5rem
+}
+
+.mt-1 {
+	margin-top: 1rem
+}
+
+.mt-1h {
+	margin-top: 1.5rem
+}
+
+.mt-2 {
+	margin-top: 2rem
+}
+
+.mt-2h {
+	margin-top: 2.5rem
+}
+
+.mt-3 {
+	margin-top: 3rem
+}
+
+.mx-auto {
+	margin-right: auto;
+	margin-left: auto
+}
+
+.mr-h {
+	margin-right: 0.5rem
+}
+
+.mr-1 {
+	margin-right: 1rem
+}
+
+.mr-1h {
+	margin-right: 1.5rem
+}
+
+.ml-h {
+	margin-left: 0.5rem
+}
+
+.ml-1 {
+	margin-left: 1rem
+}
+
+.ml-2 {
+	margin-left: 2rem
+}
+
+.mb-0 {
+	margin-bottom: 0
+}
+
+.mb-hh {
+	margin-bottom: 0.25rem
+}
+
+.mb-h {
+	margin-bottom: 0.5rem
+}
+
+.mb-1 {
+	margin-bottom: 1rem
+}
+
+.mb-2 {
+	margin-bottom: 2rem
+}
+
+.mb-3 {
+	margin-bottom: 3rem
+}
+
+
+/*! Paddings */
+
+.p-1 {
+	padding: 1rem
+}
+
+.p-1h {
+	padding: 1.5rem
+}
+
+.p-2 {
+	padding: 2rem
+}
+
+.py-0 {
+	padding-top: 0;
+	padding-bottom: 0
+}
+
+.py-h {
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem
+}
+
+.py-1 {
+	padding-top: 1rem;
+	padding-bottom: 1rem
+}
+
+.py-2 {
+	padding-top: 2rem;
+	padding-bottom: 2rem
+}
+
+.py-3 {
+	padding-top: 3rem;
+	padding-bottom: 3rem
+}
+
+.px-0 {
+	padding-left: 0;
+	padding-right: 0
+}
+
+.px-h {
+	padding-left: .5rem;
+	padding-right: .5rem
+}
+
+.px-1 {
+	padding-left: 1rem;
+	padding-right: 1rem
+}
+
+.pt-h {
+	padding-top: 0.5rem
+}
+
+.pt-1 {
+	padding-top: 1rem
+}
+
+.pt-1h {
+	padding-top: 1.5rem
+}
+
+.pt-2 {
+	padding-top: 2rem
+}
+
+.pb-h {
+	padding-bottom: 0.5rem
+}
+
+.pb-1 {
+	padding-bottom: 1rem
+}
+
+.pb-1h {
+	padding-bottom: 1.5rem
+}
+
+.pb-2 {
+	padding-bottom: 2rem
+}
+
+.p-1s {
+	padding: 0 1rem
+}
+
+.pl-0 {
+	padding-left: 0
+}
+
+.pl-q {
+	padding-left: 0.25rem
+}
+
+.pl-h {
+	padding-left: 0.5rem
+}
+
+.pl-1 {
+	padding-left: 1rem
+}
+
+.pl-2 {
+	padding-left: 2rem
+}
+
+.pr-q {
+	padding-right: 0.25rem
+}
+
+.pr-h {
+	padding-right: 0.5rem
+}
+
+.pr-1 {
+	padding-right: 1rem
+}
+
+.pr-2 {
+	padding-right: 2rem
+}
+
+.show-smallup {
+	display: none
+}
+
+@media only screen and (min-width: 544px) {
+	.show-smallup {
+		display: block
+	}
+}
+
+.hide-smallup {
+	display: block
+}
+
+@media only screen and (min-width: 544px) {
+	.hide-smallup {
+		display: none
+	}
+}
+
+.show-mediumup {
+	display: none
+}
+
+@media only screen and (min-width: 768px) {
+	.show-mediumup {
+		display: block
+	}
+}
+
+.hide-mediumup {
+	display: block
+}
+
+@media only screen and (min-width: 768px) {
+	.hide-mediumup {
+		display: none
+	}
+}
+
+.show-slaptop {
+	display: none
+}
+
+@media only screen and (min-width: 1024px) {
+	.show-slaptop {
+		display: block
+	}
+}
+
+.hide-slaptop {
+	display: block
+}
+
+@media only screen and (min-width: 1024px) {
+	.hide-slaptop {
+		display: none
+	}
+}
+
+.sr:not(:focus):not(:active) {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	border: 0;
+	clip-path: inset(100%);
+	overflow: hidden;
+	white-space: nowrap
+}
+
+
+/*! Headings Style */
+
+h1,
+h2,
+h3,
+h4,
+.h1,
+.h2,
+.h3,
+.h4 {
+	margin-top: .64rem;
+	margin-bottom: .32rem;
+	font-weight: 700
+}
+
+h1,
+.h1 {
+	font-family: "DM Sans", sans-serif;
+	font-size: 2.4rem;
+	line-height: 2.2rem
+}
+
+@media only screen and (min-width: 544px) {
+	h1,
+	.h1 {
+		font-size: 2.08rem
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	h1,
+	.h1 {
+		font-size: 4rem
+	}
+}
+
+h2,
+.h2 {
+	font-family: "DM Sans", sans-serif;
+	font-size: 1.5rem
+}
+
+@media only screen and (min-width: 544px) {
+	h2,
+	.h2 {
+		font-size: 1.96rem
+	}
+}
+
+h3,
+.h3 {
+	font-family: "DM Sans", sans-serif;
+	font-size: 1.42rem;
+	line-height: 1.5rem;
+	margin: 0
+}
+
+h4,
+.h4 {
+	font-family: "DM Sans", sans-serif;
+	font-size: 0.96rem;
+	letter-spacing: 1.12px
+}
+
+h3+h4,
+.h3+.h4 {
+	margin-top: 1.24rem
+}

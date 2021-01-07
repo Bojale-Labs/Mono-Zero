@@ -1,0 +1,12 @@
+@tailwind base;
+@import './base.css';
+
+@tailwind components;
+@import './components.css';
+@import '/pages/account.css';
+@import '/pages/bank.css';
+@import '/pages/loans.css';
+@import '/pages/finance.css';
+/* @import '/pages/account.css'; */
+
+@tailwind utilities;
