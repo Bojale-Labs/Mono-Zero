@@ -14,7 +14,7 @@ const Input: React.FC<Props> = (props) => {
 
   const handleOnChange = (e: any) => {
     if (onChange) {
-      onChange(e.target.value)
+      onChange(e.target.value, e.target.name)
     }
     return null
   }

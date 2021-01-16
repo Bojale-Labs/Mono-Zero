@@ -28,6 +28,8 @@ const CreateAccount = () => {
     setModalView,
     closeModal,
     setBankAccount,
+    setUserInfo,
+    userInfo,
     bankAccount,
     modalView,
   } = useUI()
@@ -64,6 +66,28 @@ const CreateAccount = () => {
               }
             })
           })
+          .then(async () => {
+            await axios
+              .get(`accounts/${code}/statement?period=last6months`)
+              .then((res) => {
+                if (res.status === 200) {
+                  let statementData = res.data && res.data
+                  setLoading(false)
+                  let statement = {
+                    debits: 0,
+                    credits: 0,
+                    transactionCount: statementData.meta.count,
+                  }
+                  statementData.data.map((transaction) => {
+                    transaction.type === 'debit'
+                      ? (statement.debits = statement.debits + 1)
+                      : (statement.credits = statement.credits + 1)
+                  })
+
+                  setUserInfo(Object.assign(userInfo, statement))
+                }
+              })
+          })
           .catch((err) => {
             /*   setMessage('An error occured', err)
              */
@@ -78,6 +102,7 @@ const CreateAccount = () => {
   useEffect(() => {
     mounted.current = true
     fetchUserInfo()
+
     return () => {
       mounted.current = false
     }
@@ -112,9 +137,12 @@ const CreateAccount = () => {
 
   const submitForm = (e: React.SyntheticEvent<EventTarget>) => {
     e.preventDefault
+    setUserInfo(userInfo)
     setModalView('ACCOUNT_CREATED')
   }
-
+  const onChange = (value, name) => {
+    setUserInfo(Object.assign(userInfo, { [name]: value }))
+  }
   return (
     <div>
       {/* 
@@ -150,6 +178,28 @@ const CreateAccount = () => {
               <Input
                 placeholder="Bank "
                 value={bankAccount.institution.name || ''}
+              />
+
+              <Input
+                type="number"
+                placeholder="Your Income"
+                name="income"
+                value={userInfo.income}
+                onChange={onChange}
+              />
+              <Input
+                type="number"
+                placeholder="Amount You Want To Loan"
+                name="loanAmount"
+                value={userInfo.loanAmount}
+                onChange={onChange}
+              />
+              <Input
+                type="number"
+                placeholder="Your Age"
+                name="age"
+                value={userInfo.age}
+                onChange={onChange}
               />
 
               <div className="pt-2 w-full flex flex-col">

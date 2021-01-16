@@ -1,15 +1,28 @@
 import { FC, useEffect, useState, useCallback } from 'react'
 import { Logo, Button, Input } from '@components/ui'
 import { useUI } from '@components/ui/context'
+import loanCalculator from 'lib/loanCalculator'
 
 interface Props {}
 
 const LoanList: FC<Props> = () => {
-  const { setModalView, closeModal, loans, setLoanSelected } = useUI()
+  const {
+    setModalView,
+    closeModal,
+    loans,
+    setLoanSelected,
+    loanScoreSummary,
+    setLoanSummary,
+    userInfo,
+  } = useUI()
+
+  useEffect(() => setLoanSummary(loanCalculator(userInfo)), [])
 
   const handleLoanRequest = (loan: any = {}) => {
     let verdict =
-      loan && loan.score > 5 ? 'LOAN_REQUEST_APPROVED' : 'LOAN_REQUEST_REJECTED'
+      loan && loan.score < loanScoreSummary.creditScore
+        ? 'LOAN_REQUEST_APPROVED'
+        : 'LOAN_REQUEST_REJECTED'
     setLoanSelected(loan)
     setModalView(verdict)
   }
@@ -47,7 +60,10 @@ const LoanList: FC<Props> = () => {
               <span>
                 <img src="/svg/check.svg" alt="check" />
               </span>
-              <p>You {loan.score < 5 && `don't `} qualify for this loan.</p>
+              <p>
+                You {loan.score > loanScoreSummary.creditScore && `don't `} qualify
+                for this loan.
+              </p>
             </div>
           </div>
         ))}

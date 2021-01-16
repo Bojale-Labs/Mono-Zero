@@ -10,6 +10,8 @@ export interface State {
   modalView: string
   toastText: string
   bankAccount: object
+  loanScoreSummary: object
+  userInfo: object
   loans: []
   loanSelected: object
   currrentLoanAmt: number
@@ -22,6 +24,22 @@ const initialState = {
   modalView: 'CREATE_ACCOUNT_VIEW',
   displayToast: false,
   toastText: '',
+  userInfo: {
+    income: undefined,
+    loanAmount: undefined,
+    age: undefined,
+    debits: 0,
+    credits: 0,
+    transactionCount: 0,
+  },
+  loanScoreSummary: {
+    meta: {},
+    creditScore: 0,
+    creditRating: '',
+    approval: '',
+    loanThreshold: 0,
+    interest: 0,
+  },
   bankAccount: {
     _id: '',
     institution: {},
@@ -39,21 +57,21 @@ const initialState = {
       type: 'Electronics Loan',
       message: `Adu and Sons Power is 5% cheaper than your current power
                 purchase, take a N5000 to start using them!`,
-      score: 8,
+      score: 370,
       ref: '#D79004321782',
     },
     {
       type: 'Electronics Loan',
       message: `Peter and sons is 5% cheaper than your current power purchase,
               take a N5000 loan to start using them!`,
-      score: 1,
+      score: 200,
       ref: '#D79004321783',
     },
     {
       type: 'School Loan',
       message: `Simbi and daughters is offering a 10% cheaper plan than your current school loan plan,
               take a N50000 to start using them!`,
-      score: 4,
+      score: 180,
       ref: '#D79004321784',
     },
 
@@ -61,7 +79,7 @@ const initialState = {
       type: 'Grocery Loan',
       message: `Spar is 5% cheaper than your current food delivery service,
               take a N5000 to start using them!`,
-      score: 1,
+      score: 370,
       ref: '#D79004321785',
     },
 
@@ -69,13 +87,13 @@ const initialState = {
       type: 'Grocery Loan',
       message: `Mall Mart is 9.5% cheaper than your current food delivery service,
               take a N15000 to start using them!`,
-      score: 6,
+      score: 600,
     },
     {
       type: 'Jewelry Loan',
       message: `Exquisite cutters are delivering 5% cheaper than your current diamond abitrage shop,
               take a $5000 loan to start using them!`,
-      score: 1,
+      score: 500,
       ref: '#D79004321787',
     },
   ],
@@ -101,6 +119,14 @@ type Action =
   | {
       type: 'SET_BANK_ACCOUNT'
       details: BankAccount
+    }
+  | {
+      type: 'SET_LOAN_SCORE_SUMMARY'
+      details: LoanScoreSummary
+    }
+  | {
+      type: 'SET_USER_INFO'
+      details: UserInfo
     }
   | {
       type: 'SET_LOAN_SELECTED'
@@ -134,6 +160,8 @@ type MODAL_VIEWS =
   | 'FINANCE_SCORE'
 type ToastText = string
 type BankAccount = object
+type LoanScoreSummary = object
+type UserInfo = object
 type LoanSelected = object
 export const UIContext = React.createContext<State | any>(initialState)
 
@@ -207,6 +235,18 @@ function uiReducer(state: State, action: Action) {
         bankAccount: action.details,
       }
     }
+    case 'SET_LOAN_SCORE_SUMMARY': {
+      return {
+        ...state,
+        loanScoreSummary: action.details,
+      }
+    }
+    case 'SET_USER_INFO': {
+      return {
+        ...state,
+        userInfo: action.details,
+      }
+    }
     case 'SET_LOAN_SELECTED': {
       return {
         ...state,
@@ -239,9 +279,12 @@ export const UIProvider: FC = (props) => {
 
   const setModalView = (view: MODAL_VIEWS) =>
     dispatch({ type: 'SET_MODAL_VIEW', view })
-
+  const setLoanScoreSummary = (details) =>
+    dispatch({ type: 'SET_LOAN_SCORE_SUMMARY', details })
   const setBankAccount = (details) =>
     dispatch({ type: 'SET_BANK_ACCOUNT', details })
+  const setUserInfo = (details) => dispatch({ type: 'SET_USER_INFO', details })
+
   const setLoanSelected = (loan_selected) =>
     dispatch({ type: 'SET_LOAN_SELECTED', loan_selected })
 
@@ -258,8 +301,10 @@ export const UIProvider: FC = (props) => {
       closeModal,
       setModalView,
       setBankAccount,
+      setUserInfo,
       setLoanSelected,
       openToast,
+      setLoanScoreSummary,
       closeToast,
     }),
     [state]

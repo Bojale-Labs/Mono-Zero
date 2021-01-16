@@ -25,7 +25,7 @@ const BankAccountCreated: FC<Props> = () => {
         </div>
         <button
           onClick={() => {
-            setModalView('ACCOUNT_DASHBOARD')
+            setModalView('FINANCE_SCORE')
           }}
           className="bank-success-btn"
         >

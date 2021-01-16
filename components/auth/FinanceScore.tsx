@@ -2,11 +2,22 @@ import { FC, useEffect, useState, useCallback } from 'react'
 import { Logo, Button, Input } from '@components/ui'
 import Link from 'next/link'
 import { useUI } from '@components/ui/context'
+import loanCalculator from 'lib/loanCalculator'
 
 interface Props {}
 
 const FinanceScore: FC<Props> = () => {
-  const { setModalView } = useUI()
+
+  const {
+    setModalView,
+    loanScoreSummary,
+    setUserInfo,
+    userInfo,
+    setLoanScoreSummary,
+  } = useUI()
+
+  useEffect(() => setLoanScoreSummary(loanCalculator(userInfo)), [])
+
   return (
     <div className="finance-score">
       <div className="finance-score-head">
@@ -27,9 +38,19 @@ const FinanceScore: FC<Props> = () => {
         <div className="mt-2">
           <span className="finace-score-medal">
             <img src="/svg/medal.svg" alt="image of a medal" />
-            <span>72</span>
+            <span>{loanScoreSummary.creditScore}</span>
           </span>
-          <h4 className="finance-score-h4">It can be better!</h4>
+          <h4 className="finance-score-h4">
+            {' '}
+            Your loan has been {loanScoreSummary.approval}, Your score was{' '}
+            {loanScoreSummary.creditRating}{' '}
+            {loanScoreSummary.approval === 'DENIED' &&
+              `but
+            can be better`}
+            {loanScoreSummary.approval === 'ACCEPTED' &&
+              `, loan payable with interest of ` + loanScoreSummary.interest}
+          </h4>
+
           <p className="finance-score-p">Below are some recommendations</p>
         </div>
       </div>

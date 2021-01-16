@@ -7,7 +7,13 @@ import axios from 'lib/axiosConfig'
 interface Props {}
 
 const AccountDashboard: FC<Props> = () => {
-  const { setModalView, closeModal, bankAccount, currrentLoanAmt } = useUI()
+  const {
+    setModalView,
+    closeModal,
+    bankAccount,
+    currrentLoanAmt,
+    loanScoreSummary,
+  } = useUI()
   const [debits, setDebits] = useState(0)
   const [credits, setCredits] = useState(0)
   const [loading, setLoading] = useState(false)
@@ -90,8 +96,8 @@ const AccountDashboard: FC<Props> = () => {
             <p>
               You’ve spent{' '}
               <span>{new Intl.NumberFormat().format(debits) || 'N70,425'}</span>{' '}
-              this month. Your finance score allows you to{' '}
-              {debits > credits && `not`} loan more money.
+              this month. Your loan eligibility score is currently{' '}
+              {loanScoreSummary.creditScore}
             </p>
             <Link href="">Tell me more</Link>
           </div>
