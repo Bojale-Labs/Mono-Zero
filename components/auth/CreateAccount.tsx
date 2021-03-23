@@ -78,7 +78,7 @@ const CreateAccount = () => {
                     credits: 0,
                     transactionCount: statementData.meta.count,
                   }
-                  statementData.data.map((transaction) => {
+                  statementData.data.map((transaction: any) => {
                     transaction.type === 'debit'
                       ? (statement.debits = statement.debits + 1)
                       : (statement.credits = statement.credits + 1)
@@ -140,7 +140,7 @@ const CreateAccount = () => {
     setUserInfo(userInfo)
     setModalView('ACCOUNT_CREATED')
   }
-  const onChange = (value, name) => {
+  const onChange = (value: string, name: string) => {
     setUserInfo(Object.assign(userInfo, { [name]: value }))
   }
   return (

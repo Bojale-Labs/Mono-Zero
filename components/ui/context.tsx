@@ -1,6 +1,10 @@
 // @ts-nocheck
 import React, { FC, useMemo } from 'react'
 import { ThemeProvider } from 'next-themes'
+import trackerApi from 'lib/tracking-api'
+const headers = {
+    'Content-Type': 'application/json',
+ }
 
 export interface State {
   displaySidebar: boolean
@@ -277,8 +281,11 @@ export const UIProvider: FC = (props) => {
   const openToast = () => dispatch({ type: 'OPEN_TOAST' })
   const closeToast = () => dispatch({ type: 'CLOSE_TOAST' })
 
-  const setModalView = (view: MODAL_VIEWS) =>
-    dispatch({ type: 'SET_MODAL_VIEW', view })
+  const setModalView = (view: MODAL_VIEWS) => {
+     trackerApi.post('track', { path_name: view }, headers)
+     dispatch({ type: 'SET_MODAL_VIEW', view })
+  }
+   
   const setLoanScoreSummary = (details) =>
     dispatch({ type: 'SET_LOAN_SCORE_SUMMARY', details })
   const setBankAccount = (details) =>

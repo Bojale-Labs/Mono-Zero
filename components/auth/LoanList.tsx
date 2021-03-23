@@ -12,11 +12,11 @@ const LoanList: FC<Props> = () => {
     loans,
     setLoanSelected,
     loanScoreSummary,
-    setLoanSummary,
+    setLoanScoreSummary,
     userInfo,
   } = useUI()
 
-  useEffect(() => setLoanSummary(loanCalculator(userInfo)), [])
+  useEffect(() => setLoanScoreSummary(loanCalculator(userInfo)), [])
 
   const handleLoanRequest = (loan: any = {}) => {
     let verdict =

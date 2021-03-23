@@ -1,3 +1,4 @@
+// @ts-nocheck
 function calculateScoreOnAge(age) {
   if (age <= 25) return 100
   if (age <= 33) return 120
@@ -72,9 +73,7 @@ function createCalculation(loan, limit, term, interest) {
 
 const calculateCreditSummary = (profile) => {
   let defProfile = {
-    //DEFAULTS
     age: 0,
-    homeOwnership: 'rent',
     income: 0,
     loanAmount: 0,
     type: 'personal',
@@ -89,8 +88,6 @@ const calculateCreditSummary = (profile) => {
   let approvedInterest = calculateInterest(creditRating)
   let approval = 'DENIED'
   if (creditScore > 370) {
-    // APPROVED
-
     approval = 'ACCEPTED'
     return {
       meta: profile,

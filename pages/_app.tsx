@@ -19,7 +19,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         <ManagedUIContext>
           <Layout pageProps={pageProps}>
             <Component {...pageProps} />
-          </Layout>
+          </Layout> 
         </ManagedUIContext>
       </div>
     </>
